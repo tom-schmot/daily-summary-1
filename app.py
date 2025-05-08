@@ -70,7 +70,7 @@ def get_news(api_key, keywords):
 def summarize_news(api_key, news_data):
     client = OpenAI(api_key=api_key)
 
-    prompt = "Summarize the following news headlines and content by topic. Provide a brief paragraph and bullet points for each keyword:\n\n"
+    prompt = "Summarize the following news headlines and content by topic. Provide a detailed analysis of major talking points and information you deem important:\n\n"
     for topic in news_data:
         prompt += f"Topic: {topic['keyword']}\n"
         for article in topic['articles']:
@@ -82,7 +82,7 @@ def summarize_news(api_key, news_data):
     response = client.chat.completions.create(
         model="gpt-4",
         messages=[
-            {"role": "system", "content": "You are a helpful assistant that summarizes news by topic."},
+            {"role": "system", "content": "You are a helpful assistant that provides detailed summaries of the news."},
             {"role": "user", "content": prompt}
         ]
     )
