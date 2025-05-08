@@ -21,7 +21,11 @@ def get_weather(api_key, latitude, longitude):
     try:
         url = f'https://api.tomorrow.io/v4/timelines?location={latitude},{longitude}&fields=temperatureMax,temperatureMin,precipitationProbability,windSpeed,humidity&timesteps=1d&units=imperial&apikey={api_key}'
         response = requests.get(url)
+        print(f"URL: {url}")
+        print(f"Status Code: {response.status_code}")
+        print(f"Response: {response.text}")
         response.raise_for_status()
+
         data = response.json()
         forecast = data['data']['timelines'][0]['intervals']
         weather_summary = "5-Day Weather Forecast:\n"
