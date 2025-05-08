@@ -41,7 +41,7 @@ def get_news(api_key, keywords):
     try:
         news_data = []
         for keyword in keywords:
-            url = f'https://newsapi.org/v2/top-headlines?q={keyword}&pageSize=3&apiKey={api_key}'
+            url = f'https://newsapi.org/v2/everything?country=us&q={keyword}&pageSize=3&apiKey={api_key}'
             response = requests.get(url)
             response.raise_for_status()
             data = response.json()
