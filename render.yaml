@@ -1,22 +1,22 @@
 services:
-  - type: web
-    name: daily-summary
-    env: python
-    plan: free
-    buildCommand: pip install -r requirements.txt
-    startCommand: python app.py
-    envVars:
-      - key: tomorrow_api_key
-        sync: false
-      - key: news_api_key
-        sync: false
-      - key: openai_api_key
-        sync: false
-      - key: sender_email
-        sync: false
-      - key: sender_password
-        sync: false
-      - key: recipient_email
-        sync: false
-      - key: run_token
-        sync: false
+    - type: web
+      name: daily-summary
+      env: python
+      plan: free
+      buildCommand: pip install -r requirements.txt
+      startCommand: python app.py
+      envVars:
+        - key: tomorrow_api_key
+          sync: false
+        - key: news_api_key
+          sync: false
+        - key: openai_api_key
+          sync: false
+        - key: sender_email
+          sync: false
+        - key: sender_password
+          sync: false
+        - key: recipient_email
+          sync: false
+        - key: run_token
+          sync: false
