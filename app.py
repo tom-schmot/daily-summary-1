@@ -115,9 +115,13 @@ def run_script():
     keywords = ['Tariffs', 'Artificial Intelligence']
 
     weather_summary = get_weather(tomorrow_api_key, latitude, longitude)
+    
     news_summary = get_news(news_api_key, keywords)
-    summarized_news = summarize_news(openai_api_key, news_summary)
-
+    if isinstance(news_summary, str):
+        summarized_news = news_summary  # It's an error message
+    else:
+        summarized_news = summarize_news(openai_api_key, news_summary)
+    
     email_subject = "Daily Update"
     email_body = f"Weather Update:\n{weather_summary}\n\nNews Update:\n{summarized_news}"
     send_email(sender_email, sender_password, recipient_email, email_subject, email_body)
