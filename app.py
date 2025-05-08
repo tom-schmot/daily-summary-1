@@ -53,11 +53,18 @@ def get_news(api_key, keywords):
 
             keyword_articles = []
             for article in articles:
+                content = (
+                    article.get('content') or
+                    article.get('full_content') or
+                    article.get('description') or
+                    'No content available.'
+                )
                 keyword_articles.append({
                     'headline': article.get('title'),
-                    'content': article.get('content') or article.get('description') or 'No content available.'
+                    'content': content,
+                    'source': article.get('link')
                 })
-
+        
             news_data.append({
                 'keyword': keyword,
                 'articles': keyword_articles
