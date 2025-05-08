@@ -53,9 +53,10 @@ def get_news(api_key, keywords):
 
             keyword_articles = []
             for article in articles:
-                content = (
-                    article.get('content') or
-                    'No content available.'
+                content = article.get('content')
+                if content == "ONLY AVAILABLE IN PAID PLANS":
+                    content = article.get('description') or 'No content available.
+
                 )
                 keyword_articles.append({
                     'headline': article.get('title'),
