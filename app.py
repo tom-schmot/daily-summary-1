@@ -45,7 +45,7 @@ def get_news(api_key, keywords):
     try:
         news_data = []
         for keyword in keywords:
-            url = f'https://newsdata.io/api/1/news?apikey={api_key}&q={keyword}&language=en&page_size=5'
+            url = f'https://newsdata.io/api/1/news?apikey={api_key}&q={keyword}&language=en&page_size={page_size}'
             response = requests.get(url)
             response.raise_for_status()
             data = response.json()
@@ -122,10 +122,11 @@ def run_script():
     latitude = "41.3341205"
     longitude = "74.2213276"
     keywords = ['Tariffs', 'Artificial Intelligence']
+    page_size=10
 
     weather_summary = get_weather(tomorrow_api_key, latitude, longitude)
     
-    news_summary = get_news(news_api_key, keywords)
+    news_summary = get_news(news_api_key, keywords, page_size)
     if isinstance(news_summary, str):
         summarized_news = news_summary  # It's an error message
     else:
