@@ -41,7 +41,7 @@ def get_weather(api_key, latitude, longitude):
     except requests.exceptions.RequestException as e:
         return f"Error fetching weather data: {e}"
 
-def get_news(api_key, keywords):
+def get_news(api_key, keywords, page_size):
     try:
         news_data = []
         for keyword in keywords:
